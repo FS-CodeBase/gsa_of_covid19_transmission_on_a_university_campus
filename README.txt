@@ -10,11 +10,11 @@ Directories
 Number of Students|  None	100 students	50 students	25 students
       in Dorms    |------------------------------------------------
               All | 24	    23	            22	        21
-	          2.5K| 20	    19	            18	        17
-              2.0K|	16	    15	            14	        13
-              1.5K|	12	    11	            10	        9
-              1.0K|	8	    7	            6	        5
-              0.5K|	4	    3	            2	        1
+	      2.5K| 20	    19	            18	        17
+              2.0K| 16	    15	            14	        13
+              1.5K| 12	    11	            10	        9
+              1.0K| 8	    7	            6	        5
+              0.5K| 4	    3	            2	        1
 
 2)	model_sols/
 > Model solutions created by the script compute_all_model_solutions.m are saved in this folder.
