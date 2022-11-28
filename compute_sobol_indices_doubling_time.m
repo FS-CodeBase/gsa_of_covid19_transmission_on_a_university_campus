@@ -1,0 +1,63 @@
+% % SCRIPT: compute_sobol_indices_doubling_time                         
+% % AUTHOR: Fabian Santiago                                             
+% % EMAIL: fsantiago3@ucmerced.edu                                  
+% % DATE: 11/21/2020       
+
+% Make a folder to store DT Sobol indices if one does not exist
+if ~exist('sobol_indices_dt', 'dir')
+       mkdir('sobol_indices_dt')
+end
+
+% Load parameter information for slobal sensitivity analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+prms_info = fun_model_parameter_ranges;
+
+% Load model solutions for each contact scenario
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+model_sols_file_id = dir('model_sols/');
+model_sols_file_id(1:2) = [];
+
+% Set sub-sampling size for bootstrapping and number of resamples
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+sub_sample_size  = 1500*(sum(prms_info(:,1))+2);
+n_resamples = 2000;    % Number of times to perform re-sampling
+y_sol_idx = 1;         % index of model solution of interest
+              
+% Compute Sensitivity Indices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for case_solution_idx = 1:numel(model_sols_file_id)
+tic
+% Load model solutions YA, YB, YA_Bj, and
+% parameter information prms_info and prms_str
+load(['model_sols/',model_sols_file_id(case_solution_idx).name])
+
+% Display contact scenario being considered
+disp(['contact scenario: ',num2str(class_cap)]);
+
+% Compute first and total-order Sobol indices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[FirstOrderIdx,TotalOrderIdx,Stats] = ...
+            fun_sobol_indices_by_measure(...
+                    y_sol_idx,...
+                        sub_sample_size,...
+                            n_resamples,...
+                                YA_cell,...
+                                    YB_cell,...
+                                        YA_Bj_cell,...
+                                            prms_info(:,1)...
+                                            );
+save(... % File name:
+    ['sobol_indices_dt/Sobol_dt_'...
+        'sol',num2str(y_sol_idx),...
+            'sub',num2str(sub_sample_size),...
+                'rep',num2str(n_resamples),...
+                    'CC_',num2str(class_cap),...
+                        'Vu',num2str(Vu),'Vd',num2str(Vd),...
+                            'Vg',num2str(Vg),'Vf',num2str(Vf),'.mat'],...
+         ... % Variables to save:
+            'FirstOrderIdx',...
+                'TotalOrderIdx',...
+                    'Stats',...
+                        'class_cap');
+disp(['cs: ',num2str(class_cap),', time: ',num2str(toc/60),'min']);
+end
