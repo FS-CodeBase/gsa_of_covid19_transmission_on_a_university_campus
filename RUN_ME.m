@@ -7,19 +7,21 @@
 %     Script shows how to use the code to run simulations and perform a
 %     global sensitivity analysis.
 
-% Define cases to be numerically computed.
-CASES = [50000,  0,  0;... % [50000 = No class cap  | No vaccination] (Baseline)
-           100,  0,  0;... % [100 student class cap | No vaccination]
-            50,  0,  0;... % [50 student class cap  | No vaccination]
-         50000, 40, 50;... % [50000 = No class cap  | vU=vD=40 | vG=vF=50 ]
-           100, 40, 50;... % [100 student class cap | vU=vD=40 | vG=vF=50 ]
-            50, 40, 50;... % [50 student class cap  | vU=vD=40 | vG=vF=50 ]
-         50000, 80,100;... % [50000 = No class cap  | vU=vD=80 | vG=vF=100]
-           100, 80,100;... % [100 student class cap | vU=vD=80 | vG=vF=100]
-            50, 80,100];   % [50 student class cap  | vU=vD=80 | vG=vF=100]
-% % Uncomment to test code
-% CASES = [50000,0,0;... % Baseline (solution necessary for plotting RECI)
-%          50, 40, 50];  % (To test code)
+% Define cases to be numerically computed. These are the cases considered in the
+% main text.
+% CASES = [50000,  0,  0;... % [50000 = No class cap  | No vaccination] (Baseline)
+%            100,  0,  0;... % [100 student class cap | No vaccination]
+%             50,  0,  0;... % [50 student class cap  | No vaccination]
+%          50000, 40, 50;... % [50000 = No class cap  | vU=vD=40 | vG=vF=50 ]
+%            100, 40, 50;... % [100 student class cap | vU=vD=40 | vG=vF=50 ]
+%             50, 40, 50;... % [50 student class cap  | vU=vD=40 | vG=vF=50 ]
+%          50000, 80,100;... % [50000 = No class cap  | vU=vD=80 | vG=vF=100]
+%            100, 80,100;... % [100 student class cap | vU=vD=80 | vG=vF=100]
+%             50, 80,100];   % [50 student class cap  | vU=vD=80 | vG=vF=100]
+
+% Used to test code
+CASES = [50000,0,0;... % Baseline (solution necessary for plotting RECI)
+         50, 40, 50];  % (To test code)
 
 % Get parameter information
 prms_info = fun_model_parameter_ranges;
