@@ -38,6 +38,10 @@ Scripts
   model solutions found in the model_sols/ folder. The resulting sobol 
   indices are saved in the sobol_indices_in_time/ folder.
 
+3)  RUN_ME.m
+> Shows examples of how to run the code to produce model solutions,
+  perform the Sobol analysis and produce plots.
+
 ---------
 Functions
 ---------
