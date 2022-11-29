@@ -19,9 +19,10 @@
 %            100, 80,100;... % [100 student class cap | vU=vD=80 | vG=vF=100]
 %             50, 80,100];   % [50 student class cap  | vU=vD=80 | vG=vF=100]
 
-% Used to test code
-CASES = [50000,0,0;... % Baseline (solution necessary for plotting RECI)
-         50, 40, 50];  % (To test code)
+% Used to test code. First row is the baseline case and is necessary for adding
+% the reduction in cumulative infections (RECI) to plots. 
+CASES = [50000,  0, 0;... % [50000 = No class cap  | No vaccination] (Baseline)
+            50, 40, 50];  % [50 student class cap  | vU=vD=40 | vG=vF=50 ]
 
 % Get parameter information
 prms_info = fun_model_parameter_ranges;
