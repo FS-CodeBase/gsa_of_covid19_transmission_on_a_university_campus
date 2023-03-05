@@ -16,6 +16,7 @@ function [FirstOrderIdx,TotalOrderIdx,Stats] = ...
 % %     notation, using the fun_measure 
 
 n_solutions = numel(YA_cell);
+sol_dim = size(YA_cell{1},2);
 n_paramaters = sum(prms_bool_info);
 Si_prm_idx = find(prms_bool_info)';
 Scell   = cell(n_resamples,1);
@@ -30,7 +31,7 @@ CI_Mu  = ones(1,n_resamples);
 % tic
 parfor resamp_idx = 1:n_resamples
     % Resample with replacement (true flag)
-    resmpl_idx = randsample(y_sol_idx:y_sol_idx:(y_sol_idx*n_solutions),...
+    resmpl_idx = randsample(y_sol_idx:sol_dim:(sol_dim*n_solutions),...
                                                     sub_sample_size,true);
     YA = cell2mat(YA_cell);  YA = (YA(:,resmpl_idx));
     YB = cell2mat(YB_cell);  YB = (YB(:,resmpl_idx));
