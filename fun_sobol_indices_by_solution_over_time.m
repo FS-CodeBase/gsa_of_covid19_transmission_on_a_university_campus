@@ -15,6 +15,8 @@ function [FirstOrderIdx,TotalOrderIdx,Stats] = ...
 % %    parameters COV-19 Model indices over time following 
 % %    Saltelli et al. 2008 notation.
 
+sol_dim = size(YA_cell{1},2);
+
 N = numel(YA_cell);
 Ntpts = size(YA_cell{1},1);
 numPrms = sum(prms_bool_info);
@@ -27,7 +29,7 @@ Mucell  = cell(1,n_resamples);
 parfor r_idx = 1:n_resamples
 
     % RESAMPLE WITH REPLACEMENT
-    resmpl_idx = randsample(y_sol_idx:1:(1*N),sub_sample_size,true);
+    resmpl_idx = randsample(y_sol_idx:sol_dim:sol_dim*N,sub_sample_size,true);
 
     YA = cell2mat(YA_cell);
     YA = YA(:,resmpl_idx);
