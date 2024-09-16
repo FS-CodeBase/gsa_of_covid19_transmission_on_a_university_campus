@@ -2,7 +2,7 @@
 All code is written in MATLAB R2021b
 
 
-Covid-19 model and transmission dynamics <br /><img src="figures/Fig0.png" alt="Covid-19 transmission diagram." width="550" />
+Covid-19 model and transmission dynamics <br /><img src="figures/Fig0.png" alt="Covid-19 transmission diagram." width="650" />
 
 -----------
 Directories
