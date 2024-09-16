@@ -1,9 +1,6 @@
 # Global Sensitivity Analysis (GSA) of Covid-19 Transmission on a University Campus
 All code is written in MATLAB R2021b
 
-
-Covid-19 model and transmission dynamics <br /><img src="figures/Fig0.png" alt="Covid-19 transmission diagram." width="650" />
-
 -----------
 Directories
 -----------
@@ -11,16 +8,16 @@ Directories
 > Folder contains the contact matrices for both campus contacts and dorm 
   living contacts under different classroom and dorm capacity scenarios. 
   The following key indicates the specifics of each contact scenario based 
-  on a case number 1 through 24. 
-
+  on a case number 1 through 24. <br />
+Covid-19 model and transmission dynamics <br /><img src="figures/Fig0.png" alt="Covid-19 transmission diagram." width="650" />
 2)	model_sols/
 > Model solutions created by the script fun_compute_model_solutions.m are 
   saved in this folder.
-
+ <br /><img src="figures/Fig1.png" alt="Model solutions." width="650" />
 3)	sobol_indices_dt/
 > Sobol indices computed using the doubling time metric, with the script 
   compute_sobol_indices_doubling_time.m, are saved to this folder.
-
+  <br /><img src="figures/Fig3.png" alt="GSA of DT." width="650" />
 4)	sobol_indices_in_time/
 > Sobol indices computed in time, using the cumulative number of cases 
   computed with the script compute_sobol_indices_over_time.m are saved to 
